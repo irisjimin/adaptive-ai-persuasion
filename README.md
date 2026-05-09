@@ -25,3 +25,13 @@ This system provides an interpretable lens for understanding AI-mediated persuas
 
 ## Status
 Early-stage research prototype (HCI + usable security exploration).
+
+## Research Goal
+
+This project explores how LLMs can model and decompose cognitive persuasion mechanisms in AI-generated communication.
+
+## Key Contribution
+
+- Transition from rule-based detection → LLM-based reasoning
+- Interpretability of manipulation strategies
+- Human-centered security modeling
