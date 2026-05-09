@@ -1,12 +1,39 @@
 import streamlit as st
-
-st.set_page_config(page_title="Adaptive AI Persuasion Explorer", layout="centered")
-
+import altair as alt
+import pandas as pd
+import numpy as np
+from sentence_transformers import SentenceTransformer
 
 # -----------------------------
-# 1. Feature Extraction Model
+# Page Config
 # -----------------------------
-def analyze(text):
+st.set_page_config(
+    page_title="Adaptive AI Persuasion Explorer",
+    layout="centered"
+)
+
+# -----------------------------
+# Semantic Embedding Model
+# -----------------------------
+model = SentenceTransformer('all-MiniLM-L6-v2')
+
+prototypes = {
+    "authority": "This is an official message from the government bank security team",
+    "urgency": "Immediate action required or your account will be suspended",
+    "emotion": "Your account is at risk and may be permanently lost",
+    "social_pressure": "Most users have already verified their accounts",
+    "trust_framing": "Please verify to ensure your safety and security"
+}
+
+prototype_embeddings = {
+    k: model.encode(v)
+    for k, v in prototypes.items()
+}
+
+# -----------------------------
+# Rule-Based Analysis
+# -----------------------------
+def analyze_rule_based(text):
     text = text.lower()
 
     score = {
@@ -17,71 +44,215 @@ def analyze(text):
         "trust_framing": 0
     }
 
-    if any(w in text for w in ["urgent", "immediately", "now", "asap"]):
-        score["urgency"] += 2
-
-    if any(w in text for w in ["bank", "official", "security", "government"]):
+    # Authority
+    if any(w in text for w in [
+        "bank", "official", "security",
+        "government", "admin", "support team"
+    ]):
         score["authority"] += 2
 
-    if any(w in text for w in ["fear", "risk", "loss", "danger", "suspended"]):
+    # Urgency
+    if any(w in text for w in [
+        "urgent", "immediately", "now",
+        "asap", "within 24 hours"
+    ]):
+        score["urgency"] += 2
+
+    # Emotion / Fear
+    if any(w in text for w in [
+        "fear", "risk", "loss",
+        "danger", "suspended",
+        "problem", "permanent"
+    ]):
         score["emotion"] += 2
 
-    if any(w in text for w in ["everyone", "others", "most users"]):
+    # Social Pressure
+    if any(w in text for w in [
+        "everyone", "others",
+        "most users", "many users"
+    ]):
         score["social_pressure"] += 2
 
-    if any(w in text for w in ["verify", "confirm", "secure", "protect"]):
+    # Trust Framing
+    if any(w in text for w in [
+        "verify", "confirm",
+        "secure", "protect",
+        "safety"
+    ]):
         score["trust_framing"] += 1
 
+    # Clamp score (0–3)
     for k in score:
         score[k] = min(score[k], 3)
 
     return score
 
+# -----------------------------
+# Semantic Similarity Model
+# -----------------------------
+def semantic_score(text):
+    emb = model.encode(text)
+
+    semantic_scores = {}
+
+    for k, proto_emb in prototype_embeddings.items():
+
+        similarity = np.dot(emb, proto_emb) / (
+            np.linalg.norm(emb) *
+            np.linalg.norm(proto_emb)
+        )
+
+        semantic_scores[k] = round(float(similarity), 2)
+
+    return semantic_scores
 
 # -----------------------------
-# 2. Interpretation Layer (CHI 핵심 추가)
+# Hybrid Fusion Model
 # -----------------------------
-def interpret(score):
+def hybrid_analysis(text):
+
+    rule_score = analyze_rule_based(text)
+    semantic = semantic_score(text)
+
+    hybrid = {}
+
+    for k in rule_score:
+        hybrid[k] = round(
+            (rule_score[k] * 0.5) + (semantic[k] * 3),
+            2
+        )
+
+    return hybrid
+
+# -----------------------------
+# Interpretation Layer
+# -----------------------------
+def interpret(scores):
+
     insights = []
 
-    if score["urgency"] >= 2:
-        insights.append("⚠️ High urgency detected → time-pressure manipulation likely")
+    if scores["urgency"] >= 2:
+        insights.append(
+            "⚠️ High urgency framing detected → possible time-pressure manipulation"
+        )
 
-    if score["authority"] >= 2:
-        insights.append("🏛 Authority framing detected → institutional trust exploitation")
+    if scores["authority"] >= 2:
+        insights.append(
+            "🏛 Authority framing detected → institutional legitimacy exploitation"
+        )
 
-    if score["emotion"] >= 2:
-        insights.append("😨 Emotional fear framing → cognitive bias activation")
+    if scores["emotion"] >= 2:
+        insights.append(
+            "😨 Emotional pressure detected → fear/loss cognitive trigger"
+        )
 
-    if score["social_pressure"] >= 2:
-        insights.append("👥 Social proof pressure → conformity bias trigger")
+    if scores["social_pressure"] >= 2:
+        insights.append(
+            "👥 Social influence signal detected → conformity pressure"
+        )
 
-    if score["trust_framing"] >= 1:
-        insights.append("🔐 Trust framing → legitimacy enhancement strategy")
+    if scores["trust_framing"] >= 1:
+        insights.append(
+            "🔐 Trust framing detected → legitimacy enhancement strategy"
+        )
 
     if not insights:
-        insights.append("✅ No strong persuasion patterns detected")
+        insights.append(
+            "✅ No strong persuasion signals detected"
+        )
 
     return insights
 
+# -----------------------------
+# Adversarial Dataset
+# -----------------------------
+adversarial_samples = [
+    "URGENT: Your bank account will be suspended immediately",
+    "You must verify now or lose access forever",
+    "Most users already confirmed their identity",
+    "Official security alert from government system",
+    "Failure to comply will result in permanent restriction"
+]
 
 # -----------------------------
-# 3. UI
+# UI
 # -----------------------------
 st.title("🧠 Adaptive AI Persuasion Explorer")
-st.write("Explainable cognitive analysis of persuasive communication (rule-based model)")
 
-text = st.text_area("Enter message")
+st.write(
+    """
+Explainable cognitive analysis of persuasive communication
+using a hybrid rule-based + semantic embedding framework.
+"""
+)
 
-if st.button("Analyze"):
-    result = analyze(text)
+st.markdown("---")
 
-    st.subheader("📊 Persuasion Signals")
+text = st.text_area(
+    "Enter a message for persuasion analysis"
+)
 
-    for k, v in result.items():
+# -----------------------------
+# Main Analysis
+# -----------------------------
+if st.button("Analyze Message"):
+
+    scores = hybrid_analysis(text)
+
+    st.subheader("📊 Persuasion Signal Scores")
+
+    for k, v in scores.items():
         st.write(f"**{k}**: {v}")
 
+    # -------------------------
+    # Visualization
+    # -------------------------
+    st.subheader("📈 Visualization")
+
+    df = pd.DataFrame({
+        "Feature": list(scores.keys()),
+        "Score": list(scores.values())
+    })
+
+    chart = alt.Chart(df).mark_bar().encode(
+        x=alt.X("Feature", sort=None),
+        y="Score",
+        color="Feature"
+    ).properties(
+        width=600,
+        height=400
+    )
+
+    st.altair_chart(
+        chart,
+        use_container_width=True
+    )
+
+    # -------------------------
+    # Interpretation Layer
+    # -------------------------
     st.subheader("🧠 Interpretation Layer")
 
-    for line in interpret(result):
-        st.write(line)
+    insights = interpret(scores)
+
+    for insight in insights:
+        st.write(insight)
+
+# -----------------------------
+# Adversarial Evaluation
+# -----------------------------
+st.markdown("---")
+
+st.subheader("🧪 Adversarial Prompt Evaluation")
+
+if st.button("Run Adversarial Dataset"):
+
+    for i, sample in enumerate(adversarial_samples):
+
+        st.markdown(f"### Sample {i+1}")
+
+        st.write(sample)
+
+        sample_score = hybrid_analysis(sample)
+
+        st.json(sample_score)
