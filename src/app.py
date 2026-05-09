@@ -17,27 +17,21 @@ def analyze(text):
         "trust_framing": 0
     }
 
-    # Urgency signals
     if any(w in text for w in ["urgent", "immediately", "now", "asap"]):
         score["urgency"] += 2
 
-    # Authority signals
     if any(w in text for w in ["bank", "official", "security", "government"]):
         score["authority"] += 2
 
-    # Emotion / fear signals
     if any(w in text for w in ["fear", "risk", "loss", "danger", "suspended"]):
         score["emotion"] += 2
 
-    # Social pressure
     if any(w in text for w in ["everyone", "others", "most users"]):
         score["social_pressure"] += 2
 
-    # Trust framing
     if any(w in text for w in ["verify", "confirm", "secure", "protect"]):
         score["trust_framing"] += 1
 
-    # Clamp (0–3)
     for k in score:
         score[k] = min(score[k], 3)
 
@@ -45,7 +39,34 @@ def analyze(text):
 
 
 # -----------------------------
-# 2. UI
+# 2. Interpretation Layer (CHI 핵심 추가)
+# -----------------------------
+def interpret(score):
+    insights = []
+
+    if score["urgency"] >= 2:
+        insights.append("⚠️ High urgency detected → time-pressure manipulation likely")
+
+    if score["authority"] >= 2:
+        insights.append("🏛 Authority framing detected → institutional trust exploitation")
+
+    if score["emotion"] >= 2:
+        insights.append("😨 Emotional fear framing → cognitive bias activation")
+
+    if score["social_pressure"] >= 2:
+        insights.append("👥 Social proof pressure → conformity bias trigger")
+
+    if score["trust_framing"] >= 1:
+        insights.append("🔐 Trust framing → legitimacy enhancement strategy")
+
+    if not insights:
+        insights.append("✅ No strong persuasion patterns detected")
+
+    return insights
+
+
+# -----------------------------
+# 3. UI
 # -----------------------------
 st.title("🧠 Adaptive AI Persuasion Explorer")
 st.write("Explainable cognitive analysis of persuasive communication (rule-based model)")
@@ -55,7 +76,12 @@ text = st.text_area("Enter message")
 if st.button("Analyze"):
     result = analyze(text)
 
-    st.subheader("Results")
+    st.subheader("📊 Persuasion Signals")
 
     for k, v in result.items():
         st.write(f"**{k}**: {v}")
+
+    st.subheader("🧠 Interpretation Layer")
+
+    for line in interpret(result):
+        st.write(line)
