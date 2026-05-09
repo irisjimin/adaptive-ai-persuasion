@@ -1,96 +1,68 @@
-<p align="center">
-  <h1>🧠 Adaptive AI Persuasion Explorer</h1>
-</p>
-
-<p align="center">
-  <b>Interpretable Cognitive Analysis of AI-Generated Persuasion</b>
-</p>
-
-<p align="center">
-  Rule-based Human-Centered Security Framework for Persuasion Decomposition
-</p>
-
----
+# 🧠 Adaptive AI Persuasion Explorer
 
 ## Abstract
 
-Modern digital communication systems increasingly rely on persuasive language capable of influencing human cognitive and behavioral decision-making. Existing AI safety systems primarily focus on binary classification of content (safe vs. unsafe), failing to explain how persuasion is structurally constructed.
+Large Language Models increasingly generate persuasive content that can influence human cognition and decision-making. However, existing detection systems rely on binary classification and fail to explain *how* persuasion operates.
 
-This project introduces an interpretable rule-based cognitive analysis framework for decomposing persuasive messages into structured influence signals without relying on black-box language models. Instead of detecting malicious intent, the system models persuasion as cognitive dimensions including urgency, authority, emotional pressure, social influence, and trust framing.
+This project introduces an interpretable cognitive security framework that decomposes persuasive language into structured psychological signals: authority, urgency, emotion, social pressure, and trust framing.
 
-
----
-
-## Key Contribution
-
-✔ Fully interpretable persuasion decomposition model  
-✔ No black-box AI dependency  
-✔ Cognitive security framework for digital communication  
-✔ Human-centered explainable system design  
+We present a hybrid rule-based + semantic analysis system with an interactive Streamlit interface that enables real-time exploration of persuasion strategies.
 
 ---
 
-## Cognitive Influence Model
+## 1. Introduction
 
-- Authority → institutional legitimacy signals  
-- Urgency → time pressure cues  
-- Emotion → fear / loss framing  
-- Social Pressure → group influence cues  
-- Trust Framing → perceived safety signals  
+Modern AI systems can generate highly persuasive text, including phishing messages, social engineering attempts, and emotionally manipulative content. Traditional detection approaches fail to provide interpretability.
 
-Each dimension is scored from 0–3 using deterministic rules.
+This project addresses the gap by modeling persuasion as a set of measurable cognitive influence signals.
 
 ---
 
-## Live Demo
+## 2. Methodology
 
-> 
+We propose a hybrid framework:
 
+### 2.1 Rule-based Extraction
+- Keyword-driven detection of cognitive signals
 
----
+### 2.2 Semantic Embedding (Hybrid Extension)
+- Sentence-level embedding similarity to persuasion prototypes
 
-## Implementation
-
-- Python  
-- Streamlit  
-- Rule-based NLP heuristics  
-- No external AI APIs required  
-
----
-
-## Example Output
-
-Authority: 2  
-Urgency: 3  
-Emotion: 1  
-Social Pressure: 0  
-Trust Framing: 2  
-
-Interpretation:  
-High urgency and authority framing detected, suggesting time-sensitive institutional persuasion.
+### 2.3 Interpretation Layer
+- Converts numerical signals into human-readable cognitive explanations
 
 ---
 
-## Limitations
+## 3. System Design
 
-- No deep semantic understanding  
-- Rule-based heuristics only  
-- Limited generalization to unseen adversarial text  
-
----
-
-## Future Work
-
-- Hybrid rule + LLM model  
-- Adversarial persuasion simulation  
-- Human study validation  
-- Dataset expansion for security benchmarking  
+- Streamlit interactive interface
+- Real-time persuasion scoring
+- Explainable output layer
+- Hybrid rule + embedding architecture
 
 ---
 
-## Status
+## 4. Key Contributions
 
-Early-stage research prototype (HCI + AI Security + Interpretability)
+- Interpretable persuasion decomposition model
+- Hybrid symbolic + semantic architecture
+- Real-time cognitive security visualization
+- Open research prototype for HCI/security studies
+
 ---
 
-## 🧭 System Overview
+## 5. Demo
+
+Run the system and input a message to observe cognitive manipulation signals.
+
+---
+
+## 6. Research Goal
+
+To explore how AI systems can model and explain persuasion mechanisms in human language rather than only detecting malicious content.
+
+---
+
+## 7. Status
+
+Early-stage research prototype (HCI / Usable Security exploration)
