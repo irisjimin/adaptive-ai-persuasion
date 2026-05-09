@@ -1,46 +1,27 @@
 # Adaptive AI Persuasion Explorer
 
-## Research Problem
-Modern AI systems are increasingly capable of generating highly persuasive messages that exploit human cognitive and emotional vulnerabilities. Existing security approaches primarily focus on binary classification (e.g., scam vs. safe), but fail to explain the underlying mechanisms of persuasion.
+## What is this?
+A research prototype that analyzes how AI-generated messages influence human decision-making through psychological manipulation signals.
 
-This project investigates how AI-mediated communication constructs adaptive persuasion strategies and how these strategies influence human security-related decision-making.
+## Problem
+Modern AI systems generate persuasive content that cannot be understood through binary classification (safe/unsafe). We lack tools to explain *how persuasion works structurally*.
 
-## Research Objective
-The goal of this project is to model persuasion not as a classification problem, but as a structured cognitive process that evolves through multiple psychological influence signals.
+## Approach
+We model persuasion as a combination of cognitive influence signals:
 
-We aim to understand how different combinations of persuasion cues affect perceived trust and decision behavior.
+- Authority
+- Emotion
+- Urgency
+- Social Pressure
+- Trust Framing
 
-## Core Research Idea
-Instead of detecting whether a message is “safe” or “unsafe”, we decompose persuasion into interpretable influence dimensions:
+Instead of detecting scams, we decompose persuasion into interpretable psychological components.
 
-- authority signaling
-- emotional pressure
-- urgency framing
-- social proof dynamics
-- trust construction
+## Demo
+Users input a message and receive a structured breakdown of manipulation signals.
 
-We further explore how combinations of these signals produce layered manipulation effects.
+## Why it matters
+This system provides an interpretable lens for understanding AI-mediated persuasion in security and HCI contexts.
 
-## System Overview
-The system takes digital messages as input and decomposes them into structured persuasion components.
-
-It models:
-- individual influence signals
-- interaction effects between signals
-- overall manipulation intensity
-
-The output is an interpretable representation of how persuasion is constructed within the message.
-
-## Dataset Design
-The dataset is structured to isolate and combine psychological persuasion vectors (authority, emotion, social pressure) in order to analyze both single-factor and multi-factor manipulation patterns.
-
-## Current Status
-This is an early-stage research prototype focused on conceptual modeling, dataset design, and system-level interpretation of AI-driven persuasion.
-
-## How to Run
-
-To run the interactive demo locally:
-
-```bash
-pip install streamlit
-streamlit run src/app.py
+## Status
+Early-stage research prototype (HCI + usable security exploration).
