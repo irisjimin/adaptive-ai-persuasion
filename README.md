@@ -1,55 +1,166 @@
-# Adaptive AI Persuasion Explorer
+# 🧠 Adaptive AI Persuasion Explorer
 
-## Abstract
-## CCS Concepts (optional but strong)
+---
+
+## 📌 Table of Contents
+
+1. Abstract  
+2. Introduction  
+3. Problem Statement  
+4. Research Objective  
+5. System Overview  
+6. Methodology  
+7. Cognitive Influence Model  
+8. System Implementation  
+9. Interface Design  
+10. Results (Prototype Output)  
+11. Limitations  
+12. Future Work  
+13. Conclusion  
+14. Key Contribution  
+15. Status  
+
+---
+
+## 📄 Abstract
+
+Modern digital communication systems increasingly rely on persuasive language capable of influencing human cognitive and behavioral decision-making. Existing AI safety systems primarily focus on binary classification of content (e.g., safe vs. unsafe), failing to explain how persuasion is structurally constructed.
+
+This project introduces an interpretable, rule-based cognitive analysis framework for decomposing AI-generated messages into structured persuasion signals. Instead of detecting malicious intent, the system models persuasion as a set of cognitive influence dimensions including urgency, authority, emotional pressure, social influence, and trust framing.
+
+The result is a transparent and human-centered system for understanding how persuasive mechanisms operate in digital communication.
+
+---
+
 ## 1. Introduction
-## 2. Problem Statement
-## 3. System Design
-## 4. Methodology
-## 5. Implementation
-## 6. Results (Demo)
-## 7. Discussion
-## 8. Limitations
-## 9. Conclusion
 
-## Abstract 
-Large Language Models are increasingly capable of generating persuasive and adaptive communication that can influence human cognitive and behavioral responses. However, existing detection systems primarily focus on binary classification of malicious content, failing to model the underlying mechanisms of persuasion. This project introduces a human-centered security framework that decomposes AI-generated messages into interpretable cognitive influence signals, including authority, urgency, emotional pressure, social proof, and trust framing. By leveraging LLM-based reasoning, the system provides structured explanations of how persuasion is constructed rather than merely classifying messages as safe or unsafe. We present an interactive prototype built with Streamlit that visualizes these persuasion components in real time, enabling exploratory analysis of AI-mediated manipulation strategies in digital communication.
+AI-generated text is widely used in digital communication systems, including marketing, social engineering, and phishing attacks. However, current detection systems lack interpretability and fail to explain how persuasion operates at the cognitive level.
 
-## CCS Concepts
+This work focuses on modeling persuasion as a structured psychological process rather than a classification task.
 
-- Security and privacy → Social engineering attacks
-- Human-centered computing → HCI design and evaluation methods
-- Computing methodologies → Natural language processing
-- Information systems → Data mining for user behavior analysis
-
-
-## 1. Introduction
-
-Large Language Models increasingly generate persuasive content that can influence human decision-making. However, most existing systems treat such content as a binary classification problem (e.g., scam vs. safe), which fails to capture the underlying cognitive mechanisms of persuasion.
+---
 
 ## 2. Problem Statement
 
-Current AI safety and security tools focus on detection rather than explanation. As a result, users and researchers lack visibility into how persuasion is constructed within AI-generated communication.
-This work investigates AI-mediated persuasion as a structured cognitive process and proposes a system that decomposes persuasive messages into interpretable psychological influence signals.
+Existing AI safety approaches primarily treat persuasion as a binary classification problem:
 
-## 3. System Design
+- Safe / Unsafe
 
-We model persuasion as a set of cognitive influence dimensions:
+This approach fails to capture:
 
-- Authority
-- Urgency
-- Emotion
-- Social Pressure
-- Trust Framing
+- How persuasion is constructed  
+- Which cognitive signals are activated  
+- How influence accumulates  
 
-The system decomposes input text into these signals using LLM-based reasoning and provides structured interpretability outputs.
+---
 
-## 4. Methodology
+## 3. Research Objective
 
-Instead of rule-based detection, we leverage large language models to infer latent persuasion structures. Each input message is analyzed through a reasoning prompt that extracts cognitive influence scores and explanatory interpretations.
+To design an interpretable system that:
 
-## Key Contributions
+- Decomposes persuasive messages into cognitive signals  
+- Quantifies influence dimensions  
+- Provides human-readable explanations of manipulation strategies  
 
-- A shift from binary classification to structural persuasion modeling
-- LLM-based interpretability of cognitive manipulation signals
-- A human-centered security interface for analyzing AI-generated persuasion
+---
+
+## 4. System Overview
+
+The system processes input text through a structured pipeline:
+
+Input Text  
+→ Cognitive Feature Extraction  
+→ Rule-based Scoring Model  
+→ Interpretation Layer  
+→ Visualization (Streamlit UI)
+
+---
+
+## 5. Methodology
+
+We adopt a rule-based interpretability approach rather than black-box learning models.
+
+The system identifies linguistic patterns associated with persuasion signals.
+
+---
+
+## 6. Cognitive Influence Model
+
+We define five core dimensions:
+
+- Authority: institutional or expert framing  
+- Urgency: time pressure mechanisms  
+- Emotion: fear, anxiety, loss aversion  
+- Social Pressure: normative influence  
+- Trust Framing: legitimacy construction  
+
+Each dimension is scored from 0–3 using heuristic rules.
+
+---
+
+## 7. System Implementation
+
+- Language: Python  
+- Framework: Streamlit  
+- Model Type: Rule-based cognitive scoring system  
+
+---
+
+## 8. Interface Design
+
+Users input a message and receive:
+
+- Structured persuasion score breakdown  
+- Human-readable explanation of influence patterns  
+
+---
+
+## 9. Results (Prototype Output)
+
+Example:
+
+Authority: 2  
+Urgency: 3  
+Emotion: 1  
+Social Pressure: 0  
+Trust Framing: 2  
+
+Interpretation:  
+The message demonstrates high urgency and authority framing, suggesting time-sensitive institutional pressure.
+
+---
+
+## 10. Limitations
+
+- Rule-based system cannot capture deep semantic reasoning  
+- Limited generalization to adversarial text  
+- Requires extension to hybrid LLM-based models  
+
+---
+
+## 11. Future Work
+
+- Hybrid LLM + rule-based system  
+- Adversarial persuasion simulation  
+- User study for cognitive impact validation  
+- Dataset expansion for real-world evaluation  
+
+---
+
+## 12. Conclusion
+
+This work presents a transparent and interpretable framework for analyzing AI-driven persuasion. Rather than detecting malicious content, it provides structural insight into how persuasion operates at the cognitive level.
+
+---
+
+## 13. Key Contribution
+
+- Shift from classification → cognitive decomposition  
+- Fully interpretable persuasion modeling system  
+- Human-centered AI security framework  
+
+---
+
+## 14. Status
+
+Early-stage research prototype (HCI + AI security + interpretability)
