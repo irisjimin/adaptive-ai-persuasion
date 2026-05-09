@@ -1,0 +1,20 @@
+[AUTHORITY + EMOTION]
+Official University Notice: Your account access will be suspended due to unusual activity. Immediate verification is required to avoid permanent restriction.
+
+[AUTHORITY + SOCIAL PROOF]
+University IT Services: 87% of students have already completed mandatory security verification. Failure to comply may affect system access.
+
+[EMOTION + URGENCY]
+Your payment has failed multiple times. If not resolved within 2 hours, your account will be locked and recovery may not be possible.
+
+[EMOTION + SOCIAL PRESSURE]
+People in your network have already responded to this alert. Delaying action may put your shared data at risk.
+
+[AUTHORITY + EMOTION + SOCIAL PRESSURE]
+Official Security Office: Multiple users have reported suspicious activity linked to your account. Immediate action is required to prevent escalation.
+
+[NEUTRAL CONTROL]
+Hey, are we still meeting tomorrow for lunch?
+
+[NEUTRAL CONTROL]
+I saw this article and thought you might find it interesting.
