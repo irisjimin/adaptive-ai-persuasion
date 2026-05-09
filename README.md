@@ -36,3 +36,11 @@ The dataset is structured to isolate and combine psychological persuasion vector
 
 ## Current Status
 This is an early-stage research prototype focused on conceptual modeling, dataset design, and system-level interpretation of AI-driven persuasion.
+
+## How to Run
+
+To run the interactive demo locally:
+
+```bash
+pip install streamlit
+streamlit run src/app.py
