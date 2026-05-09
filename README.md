@@ -1,8 +1,8 @@
-# 🧠 Adaptive AI Persuasion Explorer
+# Adaptive AI Persuasion Explorer
 
 ---
 
-## 📌 Table of Contents
+## Table of Contents
 
 1. Abstract  
 2. Introduction  
@@ -22,7 +22,7 @@
 
 ---
 
-## 📄 Abstract
+## Abstract
 
 Modern digital communication systems increasingly rely on persuasive language capable of influencing human cognitive and behavioral decision-making. Existing AI safety systems primarily focus on binary classification of content (e.g., safe vs. unsafe), failing to explain how persuasion is structurally constructed.
 
