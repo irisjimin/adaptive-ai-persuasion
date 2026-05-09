@@ -1,45 +1,44 @@
 import streamlit as st
 
+st.set_page_config(page_title="AI Persuasion Lab", layout="centered")
+
 def analyze(text):
     score = {
-        "urgency": 0,
-        "authority": 0,
-        "emotion": 0,
-        "trust": 0,
-        "social": 0
+        "Authority": 0,
+        "Emotion": 0,
+        "Urgency": 0,
+        "Social Pressure": 0,
+        "Trust Framing": 0
     }
 
     t = text.lower()
 
-    if "urgent" in t or "immediately" in t:
-        score["urgency"] += 2
-
+    if "urgent" in t:
+        score["Urgency"] += 2
     if "official" in t or "bank" in t:
-        score["authority"] += 2
-
+        score["Authority"] += 2
     if "warning" in t or "fear" in t:
-        score["emotion"] += 2
-
-    if "trusted" in t:
-        score["trust"] += 1
-
+        score["Emotion"] += 2
     if "everyone" in t or "others" in t:
-        score["social"] += 2
+        score["Social Pressure"] += 2
+    if "trusted" in t:
+        score["Trust Framing"] += 1
 
-    total = sum(score.values())
-
-    return score, total
+    return score
 
 
-st.title("Adaptive AI Persuasion Explorer")
+st.title("🧠 Adaptive AI Persuasion Explorer")
+st.write("Analyzing how AI-driven messages manipulate human decision-making")
 
 text = st.text_area("Enter message")
 
 if st.button("Analyze"):
-    score, total = analyze(text)
+    score = analyze(text)
 
-    st.write("### Breakdown")
-    st.json(score)
+    st.subheader("Psychological Influence Breakdown")
 
-    st.write("### Total Risk Score")
-    st.metric("Risk", total)
+    for k, v in score.items():
+        st.write(f"**{k}**: {v}")
+
+    st.subheader("Interpretation")
+    st.write("This message contains layered persuasion signals affecting human cognitive bias.")
