@@ -109,3 +109,12 @@ Hybrid Score Fusion
 Interpretation Layer
     ↓
 Visualization Dashboard
+
+
+## Installation
+
+Clone the repository:
+
+```bash
+git clone https://github.com/irisjimin/adaptive-ai-persuasion.git
+cd adaptive-ai-persuasion
