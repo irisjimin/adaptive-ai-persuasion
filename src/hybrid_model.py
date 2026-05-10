@@ -1,2 +1,2 @@
-from src.rules import analyze_rule_based
-from src.semantic_model import semantic_score
+from rules import analyze_rule_based
+from semantic_model import semantic_score
