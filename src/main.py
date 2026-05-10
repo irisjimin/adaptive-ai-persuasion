@@ -1,5 +1,5 @@
-from src.hybrid_model import hybrid_analysis
-from src.interpreter import interpret
+from hybrid_model import hybrid_analysis
+from interpreter import interpret
 
 
 def main():
