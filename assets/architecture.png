@@ -1,1 +1,14 @@
-
+User Input Message
+        ↓
+Rule-Based Detector
+(keyword heuristics)
+        ↓
+Semantic Embedding Layer
+(sentence similarity)
+        ↓
+Hybrid Score Fusion
+        ↓
+Interpretation Engine
+        ↓
+Visualization Dashboard
+(Streamlit)
