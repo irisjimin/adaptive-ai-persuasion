@@ -5,7 +5,7 @@ from sklearn.metrics import precision_score
 from sklearn.metrics import recall_score
 from sklearn.metrics import f1_score
 
-from src.hybrid_model import hybrid_analysis
+from hybrid_model import hybrid_analysis
 
 
 def predict_label(text):
