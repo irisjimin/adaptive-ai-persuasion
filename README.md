@@ -1,68 +1,111 @@
-# 🧠 Adaptive AI Persuasion Explorer
+# Cognitive Security for AI-Generated Persuasion
+### Explainable Detection of Psychological Manipulation in LLM-Generated Text
 
-## Abstract
+## Overview
 
-Large Language Models increasingly generate persuasive content that can influence human cognition and decision-making. However, existing detection systems rely on binary classification and fail to explain *how* persuasion operates.
+Large Language Models are increasingly capable of generating persuasive content that can influence human cognition, trust, and decision-making.
 
-This project introduces an interpretable cognitive security framework that decomposes persuasive language into structured psychological signals: authority, urgency, emotion, social pressure, and trust framing.
+This creates emerging risks in:
 
-We present a hybrid rule-based + semantic analysis system with an interactive Streamlit interface that enables real-time exploration of persuasion strategies.
+- AI-generated phishing
+- social engineering attacks
+- manipulative chatbot interactions
+- deceptive automated messaging
 
----
+Most existing safety systems focus on binary harmful/not harmful classification, which often fails to explain *how* persuasion operates.
 
-## 1. Introduction
+This project introduces an interpretable cognitive security framework that decomposes persuasive language into structured psychological influence signals.
 
-Modern AI systems can generate highly persuasive text, including phishing messages, social engineering attempts, and emotionally manipulative content. Traditional detection approaches fail to provide interpretability.
+The system identifies:
 
-This project addresses the gap by modeling persuasion as a set of measurable cognitive influence signals.
+- Authority framing
+- Urgency pressure
+- Emotional manipulation
+- Social pressure
+- Trust framing
 
----
-
-## 2. Methodology
-
-We propose a hybrid framework:
-
-### 2.1 Rule-based Extraction
-- Keyword-driven detection of cognitive signals
-
-### 2.2 Semantic Embedding (Hybrid Extension)
-- Sentence-level embedding similarity to persuasion prototypes
-
-### 2.3 Interpretation Layer
-- Converts numerical signals into human-readable cognitive explanations
+and provides human-readable explanations for why a message may be psychologically manipulative.
 
 ---
 
-## 3. System Design
+## Research Motivation
 
-- Streamlit interactive interface
-- Real-time persuasion scoring
-- Explainable output layer
-- Hybrid rule + embedding architecture
+As generative AI systems become more accessible, malicious actors may increasingly use LLMs to create scalable phishing campaigns, fraud messages, and social engineering attacks.
 
----
+Traditional content moderation systems often detect whether content is harmful, but they rarely explain the underlying persuasion mechanisms used to manipulate users.
 
-## 4. Key Contributions
+This project explores a different question:
 
-- Interpretable persuasion decomposition model
-- Hybrid symbolic + semantic architecture
-- Real-time cognitive security visualization
-- Open research prototype for HCI/security studies
+**Can AI systems help explain cognitive manipulation strategies embedded in persuasive language?**
 
 ---
 
-## 5. Demo
+## Research Question
 
-Run the system and input a message to observe cognitive manipulation signals.
-
----
-
-## 6. Research Goal
-
-To explore how AI systems can model and explain persuasion mechanisms in human language rather than only detecting malicious content.
+How can we build interpretable systems that detect and explain persuasion strategies used in AI-generated manipulative communication?
 
 ---
 
-## 7. Status
+## Methodology
 
-Early-stage research prototype (HCI / Usable Security exploration)
+This project uses a hybrid architecture that combines symbolic reasoning with semantic modeling.
+
+### 1. Rule-Based Persuasion Detection
+
+Keyword-level heuristics identify explicit persuasion indicators such as:
+
+- urgency terms
+- authority claims
+- fear triggers
+- trust language
+- conformity pressure
+
+---
+
+### 2. Semantic Similarity Layer
+
+To reduce limitations of pure keyword detection, the system uses:
+
+`sentence-transformers/all-MiniLM-L6-v2`
+
+to compare input messages against persuasion prototypes using embedding similarity.
+
+This enables detection of semantically similar manipulative language patterns.
+
+---
+
+### 3. Hybrid Scoring Model
+
+Final persuasion scores combine:
+
+- rule-based signals
+- semantic similarity scores
+
+to improve interpretability while maintaining flexibility.
+
+---
+
+### 4. Interpretation Layer
+
+The system converts numerical scores into human-readable explanations such as:
+
+- "High urgency framing detected"
+- "Authority exploitation detected"
+- "Emotional pressure identified"
+
+---
+
+## System Architecture
+
+```bash
+Input Message
+    ↓
+Rule-Based Detection
+    ↓
+Semantic Embedding Analysis
+    ↓
+Hybrid Score Fusion
+    ↓
+Interpretation Layer
+    ↓
+Visualization Dashboard
