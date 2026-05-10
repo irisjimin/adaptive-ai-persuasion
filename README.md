@@ -1,6 +1,9 @@
 # Cognitive Security for AI-Generated Persuasion
 ### Explainable Detection of Psychological Manipulation in LLM-Generated Text
 
+Live Demo:
+https://adaptive-ai-persuasion-en8om2ta7guo4qnwmvdkbk.streamlit.app/
+
 ## Overview
 
 Large Language Models can generate highly persuasive content capable of influencing human trust, decision-making, and behavior.
@@ -15,9 +18,6 @@ This creates emerging risks in:
 Most existing safety systems focus on binary harmful/not harmful classification but fail to explain how persuasion works.
 
 This project introduces an interpretable cognitive security framework that decomposes persuasive language into structured psychological influence signals.
-
-## Demo Preview
-![Demo](assets/demo.gif)
 
 ## Research Motivation
 
