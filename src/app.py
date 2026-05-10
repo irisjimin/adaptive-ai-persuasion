@@ -2,8 +2,8 @@ import streamlit as st
 import pandas as pd
 import altair as alt
 
-from hybrid_model import hybrid_analysis
-from interpreter import interpret
+from src.hybrid_model import hybrid_analysis
+from src.interpreter import interpret
 
 
 st.set_page_config(
